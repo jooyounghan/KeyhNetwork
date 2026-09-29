@@ -1,18 +1,8 @@
 ﻿#pragma once
+#include "PacketEnum.h"
 
 namespace keyh
 {
-	KEYH_REFLECT_ENUM
-	enum class FieldType : uint8
-	{
-		Int,
-		Uint,
-		Float,
-		Double,
-		ManualFloat,
-		Group,
-	};
-
 	struct REFLECTIVE(PacketField)
 	{
 		KEYH_REFLECT_DECLARE_BODY(PacketField);
