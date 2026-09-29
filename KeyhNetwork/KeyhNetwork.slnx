@@ -1,0 +1,32 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="DevRelease" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Network/">
+    <Project Path="NetworkSystem/NetworkSystem.vcxproj" Id="8bb7b838-c69e-4b20-b65d-a4eb41309be7">
+      <BuildType Solution="DevRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Folder Name="/Test/">
+    <Project Path="Test/Test.vcxproj" Id="534ee0e8-5135-4a09-b84d-e8ff8010c843">
+      <BuildType Solution="DevRelease|*" Project="Release" />
+    </Project>
+  </Folder>
+  <Folder Name="/Tools/">
+    <File Path="Tools/update_vcpkg_baselines.bat" />
+  </Folder>
+  <Folder Name="/External/">
+    <File Path="External/ExternalKeyhCommon.props" />
+    <File Path="External/vcpkg-configuration.json" />
+    <File Path="External/vcpkg.json" />
+  </Folder>
+</Solution>

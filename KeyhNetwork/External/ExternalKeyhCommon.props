@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_ExternalKeyhCommonPropsImported>true</_ExternalKeyhCommonPropsImported>
+    <KeyhCommonVcpkgInstalledDir>$(VcpkgInstalledDir)$(VcpkgTriplet)\</KeyhCommonVcpkgInstalledDir>
+    <KeyhCommonIncludeRoot Condition="'$(KeyhCommonIncludeRoot)' == ''">$(KeyhCommonVcpkgInstalledDir)include\keyhcommon\</KeyhCommonIncludeRoot>
+    <KeyhCommonCommonBaseIncludeDir Condition="'$(KeyhCommonCommonBaseIncludeDir)' == ''">$(KeyhCommonIncludeRoot)commonbase\</KeyhCommonCommonBaseIncludeDir>
+    <KeyhCommonReflectSystemIncludeDir Condition="'$(KeyhCommonReflectSystemIncludeDir)' == ''">$(KeyhCommonIncludeRoot)reflectsystem\</KeyhCommonReflectSystemIncludeDir>
+    <KeyhCommonAppSystemIncludeDir Condition="'$(KeyhCommonAppSystemIncludeDir)' == ''">$(KeyhCommonIncludeRoot)appsystem\</KeyhCommonAppSystemIncludeDir>
+    <KeyhCommonNatvis Condition="'$(KeyhCommonNatvis)' == ''">$(KeyhCommonVcpkgInstalledDir)share\keyhcommon\CommonBase.natvis</KeyhCommonNatvis>
+    <KeyhCommonOutputDir Condition="'$(KeyhCommonOutputDir)' == '' and ('$(UseDebugLibraries)' == 'true' or ('$(UseDebugLibraries)' == '' and '$(Configuration)' == 'Debug'))">$(KeyhCommonVcpkgInstalledDir)debug\lib\</KeyhCommonOutputDir>
+    <KeyhCommonOutputDir Condition="'$(KeyhCommonOutputDir)' == '' and '$(KeyhCommonVcpkgInstalledDir)' != ''">$(KeyhCommonVcpkgInstalledDir)lib\</KeyhCommonOutputDir>
+    <KeyhCommonCommonBaseLibrary>$(KeyhCommonOutputDir)CommonBase.lib</KeyhCommonCommonBaseLibrary>
+    <KeyhCommonReflectSystemLibrary>$(KeyhCommonOutputDir)ReflectSystem.lib</KeyhCommonReflectSystemLibrary>
+    <KeyhCommonAppSystemLibrary>$(KeyhCommonOutputDir)AppSystem.lib</KeyhCommonAppSystemLibrary>
+    <PublicIncludeDirectories>$(KeyhCommonAppSystemIncludeDir);$(KeyhCommonReflectSystemIncludeDir);$(KeyhCommonCommonBaseIncludeDir);$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <CommonBaseInheritedPreprocessorDefinitions></CommonBaseInheritedPreprocessorDefinitions>
+    <CommonBaseInheritedPreprocessorDefinitions Condition="'$(Configuration)' == 'Debug'">KEYH_DEBUG;KEYH_DEV;</CommonBaseInheritedPreprocessorDefinitions>
+    <CommonBaseInheritedPreprocessorDefinitions Condition="'$(Configuration)' == 'DevRelease'">KEYH_DEV;</CommonBaseInheritedPreprocessorDefinitions>
+    <CommonBaseInheritedPreprocessorDefinitions Condition="'$(CommonBaseInheritedPreprocessorDefinitions)' == '' and '$(Configuration)' == 'Release' and $([System.String]::Copy('$(CurrentSolutionConfigurationContents)').Contains('&lt;SolutionConfiguration&gt;DevRelease|'))">KEYH_DEV;</CommonBaseInheritedPreprocessorDefinitions>
+    <PublicPreprocessorDefinitions>$(CommonBaseInheritedPreprocessorDefinitions)$(PublicPreprocessorDefinitions)</PublicPreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(KeyhCommonAppSystemIncludeDir);$(KeyhCommonReflectSystemIncludeDir);$(KeyhCommonCommonBaseIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>$(PublicPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles);CommonBasePch.h;CommonCore.h;AssertUtil.h;FileUtil.h;HashUtil.h;MathUtil.h;MemoryUtil.h;SimdUtil.h;StrUtil.h;StringView.h;StaticString.h;FlyweightString.h;SplitterString.h;Ptr.h;RefPtr.h;WeakPtr.h;HashMap.h;HashSet.h;Vector.h;OwnerVector.h;InlinedVector.h;IBuffer.h;StaticBuffer.h;DynamicBuffer.h;File.h;FileWriter.h;Delegate.h;ReflectSystemPch.h;ReflectionUtil.h;IReflectProperty.h;IReflectObject.h;ReflectMetaObject.h;ReflectObject.h;ReflectProperty.h;ReflectPropertyPolicy.h;ReflectSerializer.h;AppSystemPch.h;CommandLineManager.h;ResourcePathManager.h;</ForcedIncludeFiles>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup Condition="Exists('$(KeyhCommonNatvis)')">
+    <Natvis Include="$(KeyhCommonNatvis)" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,28 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="PrepareKeyhCommon"
+          BeforeTargets="PreBuildEvent;ClCompile"
+          DependsOnTargets="VcpkgInstallManifestDependencies"
+          Condition="'$(MSBuildProjectExtension)' == '.vcxproj' and '$(DesignTimeBuild)' != 'true'">
+    <Error Condition="'$(VcpkgEnabled)' != 'true' or '$(VcpkgEnableManifest)' != 'true'"
+           Text="KeyhNetwork requires vcpkg manifest integration. Enable VcpkgEnabled and VcpkgEnableManifest." />
+    <Error Condition="'$(VcpkgTriplet)' == ''" Text="Set VcpkgTriplet for this platform." />
+    <PropertyGroup>
+      <_KeyhCommonInstalledDir>$(VcpkgInstalledDir)$(VcpkgTriplet)\</_KeyhCommonInstalledDir>
+      <_KeyhCommonCodegen>$(_KeyhCommonInstalledDir)tools\keyhcommon\run_reflect_codegen.bat</_KeyhCommonCodegen>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(_KeyhCommonInstalledDir)share\keyhcommon\KeyhCommonConfig.cmake')"
+           Text="KeyhCommon is missing from $(_KeyhCommonInstalledDir). Enable vcpkg MSBuild integration and restore $(VcpkgManifestRoot)vcpkg.json." />
+    <ItemGroup>
+      <Link Include="__KeyhCommonLinkSettings" />
+      <_KeyhCommonLinkDependency Include="%(Link.AdditionalDependencies)" />
+      <Link Remove="__KeyhCommonLinkSettings" />
+      <_KeyhCommonReflectLibrary Include="@(_KeyhCommonLinkDependency)"
+                                Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Identity)', '(?i)(^|[\\/])\s*&quot;?ReflectSystem\.lib&quot;?\s*$'))" />
+    </ItemGroup>
+    <Error Condition="'@(_KeyhCommonReflectLibrary)' != '' and !Exists('$(_KeyhCommonCodegen)')"
+           Text="KeyhCommon reflection codegen is missing at $(_KeyhCommonCodegen). Update the custom registry baseline and restore." />
+    <Exec Condition="'@(_KeyhCommonReflectLibrary)' != ''"
+          Command="call &quot;$(_KeyhCommonCodegen)&quot; &quot;$(MSBuildProjectDirectory)&quot;"
+          WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+</Project>

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg-configuration.schema.json",
+  "registries": [
+    {
+      "kind": "git",
+      "baseline": "75a42959c25ecaea57b1871d9d97dedc713d74b5",
+      "repository": "https://github.com/jooyounghan/KeyhCommon.git",
+      "packages": [
+        "keyhcommon"
+      ]
+    }
+  ]
+}

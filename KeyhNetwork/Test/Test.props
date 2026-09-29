@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\External\ExternalKeyhCommon.props" Condition="'$(_ExternalKeyhCommonPropsImported)' != 'true'" />
+  <PropertyGroup>
+    <PublicIncludeDirectories>$(MSBuildThisFileDirectory);$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <KeyhCommonInheritedPreprocessorDefinitions></KeyhCommonInheritedPreprocessorDefinitions>
+    <KeyhCommonInheritedPreprocessorDefinitions Condition="'$(Configuration)' == 'Debug'">KEYH_DEBUG;KEYH_DEV;</KeyhCommonInheritedPreprocessorDefinitions>
+    <KeyhCommonInheritedPreprocessorDefinitions Condition="'$(Configuration)' == 'DevRelease'">KEYH_DEV;</KeyhCommonInheritedPreprocessorDefinitions>
+    <PublicPreprocessorDefinitions>$(KeyhCommonInheritedPreprocessorDefinitions)$(PublicPreprocessorDefinitions)</PublicPreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile><AdditionalIncludeDirectories>$(MSBuildThisFileDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><PreprocessorDefinitions>$(PublicPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <Link><AdditionalLibraryDirectories>$(KeyhCommonOutputDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>$(KeyhCommonReflectSystemLibrary);$(KeyhCommonCommonBaseLibrary);%(AdditionalDependencies)</AdditionalDependencies></Link>
+  </ItemDefinitionGroup>
+</Project>
