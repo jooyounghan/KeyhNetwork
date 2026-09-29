@@ -1,1 +1,4 @@
-#include "CommonBasePch.h"
+﻿int main()
+{
+
+}
