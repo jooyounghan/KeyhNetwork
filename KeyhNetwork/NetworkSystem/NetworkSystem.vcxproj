@@ -73,7 +73,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConnectionRegistry.cpp" />
+    <ClCompile Include="SocketRegistry.cpp" />
     <ClCompile Include="INetworkIoEngine.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="NetworkSystemPch.cpp">
@@ -86,7 +86,7 @@
     <ClCompile Include="Session.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConnectionRegistry.h" />
+    <ClInclude Include="SocketRegistry.h" />
     <ClInclude Include="INetworkIoEngine.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="NetworkSystemPch.h" />

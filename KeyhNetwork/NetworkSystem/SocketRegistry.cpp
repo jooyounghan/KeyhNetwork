@@ -1,19 +1,19 @@
 ﻿#include "NetworkSystemPch.h"
-#include "ConnectionRegistry.h"
+#include "SocketRegistry.h"
 
 namespace keyh
 {
-	ConnectionID ConnectionRegistry::registerConnectionTcp()
+	SocketID SocketRegistry::registerSocketTcp()
 	{
-		return registerConnection(createTcpSocket());
+		return registerSocket(createTcpSocket());
 	}
 
-	ConnectionID ConnectionRegistry::registerConnectionUdp()
+	SocketID SocketRegistry::registerSocketUdp()
 	{
-		return  registerConnection(createUdpSocket());
+		return  registerSocket(createUdpSocket());
 	}
 
-	ConnectionID ConnectionRegistry::registerConnection(Socket&& socket)
+	SocketID SocketRegistry::registerSocket(Socket&& socket)
 	{
 		if (_freeSlots.empty() == false)
 		{
@@ -23,32 +23,32 @@ namespace keyh
 			SocketSlot& slot = _slots[freeIndex];
 			slot._socket = keyh::move(socket);
 
-			ConnectionID connection;
-			connection._index = freeIndex;
-			connection._generation = slot._generation;
-			return connection;
+			SocketID socketId;
+			socketId._index = freeIndex;
+			socketId._generation = slot._generation;
+			return socketId;
 		}
 
 		SocketSlot slot;
-		slot._generation = ConnectionID::kInitialGeneration;
+		slot._generation = SocketID::kInitialGeneration;
 		slot._socket = keyh::move(socket);
 
-		ConnectionID connection;
-		connection._index = static_cast<uint32>(_slots.size());
-		connection._generation = ConnectionID::kInitialGeneration;
+		SocketID socketId;
+		socketId._index = static_cast<uint32>(_slots.size());
+		socketId._generation = SocketID::kInitialGeneration;
 
 		_slots.push_back(keyh::move(slot));
 
-		return connection;
+		return socketId;
 	}
 
 
-	void ConnectionRegistry::unregisterConnection(ConnectionID connection)
+	void SocketRegistry::unregisterSocket(SocketID socket)
 	{
-		const uint32 index = connection._index;
+		const uint32 index = socket._index;
 		if (_slots.size() <= index)
 		{
-			KEYH_ASSERT_DEV(false, "Invalid connection id");
+			KEYH_ASSERT_DEV(false, "Invalid socket id");
 			return;
 		}
 		
@@ -58,26 +58,26 @@ namespace keyh
 		_freeSlots.push_back(index);
 	}
 
-	const Socket* ConnectionRegistry::getSocket(ConnectionID connection) const
+	const Socket* SocketRegistry::getSocket(SocketID socket) const
 	{
-		const uint32 index = connection._index;
+		const uint32 index = socket._index;
 		if (_slots.size() <= index)
 		{
-			KEYH_ASSERT_DEV(false, "Invalid connection id");
+			KEYH_ASSERT_DEV(false, "Invalid socket id");
 			return nullptr;
 		}
 
 		const SocketSlot& slot = _slots[index];
-		if (slot._generation != connection._generation)
+		if (slot._generation != socket._generation)
 		{
-			KEYH_ASSERT_DEV(false, "Invalid connection id [generation is invalid]");
+			KEYH_ASSERT_DEV(false, "Invalid socket id [generation is invalid]");
 			return nullptr;
 		}
 
 		return &slot._socket;
 	}
 
-	Socket ConnectionRegistry::createTcpSocket()
+	Socket SocketRegistry::createTcpSocket()
 	{
 		NativeSocket nativeSocket = kInvalidSocket;
 		nativeSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -90,7 +90,7 @@ namespace keyh
 		return Socket(nativeSocket);
 	}
 
-	Socket ConnectionRegistry::createUdpSocket()
+	Socket SocketRegistry::createUdpSocket()
 	{
 		NativeSocket nativeSocket = kInvalidSocket;
 		nativeSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);

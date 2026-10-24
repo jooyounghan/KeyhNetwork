@@ -12,8 +12,8 @@ namespace keyh
 		virtual ~INetworkIoEngine() = default;
 
 	public:
-		virtual bool registerConnection(
-			ConnectionID connection
+		virtual bool registerSocket(
+			SocketID socket
 		) = 0;
 
 		virtual bool submitReceive(

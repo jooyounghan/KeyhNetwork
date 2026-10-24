@@ -1,4 +1,4 @@
-﻿#include "ConnectionRegistry.h"
+﻿#include "SocketRegistry.h"
 
 int main()
 {

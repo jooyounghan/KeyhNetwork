@@ -6,20 +6,20 @@ namespace keyh
 {
 	class Socket;
 
-	class ConnectionRegistry
+	class SocketRegistry
 	{
 	public:
-		ConnectionID	registerConnectionTcp();
-		ConnectionID	registerConnectionUdp();
+		SocketID	registerSocketTcp();
+		SocketID	registerSocketUdp();
 
 	private:
-		ConnectionID	registerConnection(Socket&& socket);
+		SocketID	registerSocket(Socket&& socket);
 
 	public:
-		void			unregisterConnection(ConnectionID connection);
+		void			unregisterSocket(SocketID socket);
 
 	public:
-		const Socket*	getSocket(ConnectionID connection) const;
+		const Socket*	getSocket(SocketID socket) const;
 
 	private:
 		static Socket createTcpSocket();

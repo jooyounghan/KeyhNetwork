@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #if defined(KEYH_PLATFORM_WINDOWS)
 #include <winsock2.h>
@@ -21,49 +21,23 @@ namespace keyh
 	inline		int closeSocket(NativeSocket socket) { return close(socket); }
 #endif
 
-	struct ConnectionID
+	struct SocketID
 	{
 		uint32 _index;
-		uint32 _generation;
+		uint32 _generation = kInvalidGeneration;
 
 		static constexpr uint32 kInvalidGeneration = 0;
 		static constexpr uint32 kInitialGeneration = 1;
+
 		inline bool isValid() const { return _generation != kInvalidGeneration; }
 	};
 
-	struct OperationID
-	{
-		uint64 _id;
-	};
+
 
 	enum class OperationType : uint8
 	{
 		None,
 		Send,
 		Receive,
-	};
-
-	struct IoOperation
-	{
-		ConnectionID	_connection;
-		OperationID		_operation;
-		OperationType	_type;
-	};
-
-	enum class IoResult : uint8
-	{
-		Success,
-		Closed,
-		Cancelled,
-		Failure,
-	};
-
-	struct IoCompletion
-	{
-		IoOperation	_operation;
-		IoResult	_result;
-
-		size_t		_bytesTransferred;
-		int			_nativeErrorCode;
 	};
 }
