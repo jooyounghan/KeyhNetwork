@@ -6,7 +6,8 @@ namespace keyh
 	struct REFLECTIVE(PacketField)
 	{
 		KEYH_REFLECT_DECLARE_BODY(PacketField);
-		
+
+	REFLECT_PRIVATE:
 		KEYH_REFLECT_PROPERTY(PropertyName = "FieldName")
 		FlyweightStringA _name = 0;
 
@@ -21,13 +22,16 @@ namespace keyh
 
 		KEYH_REFLECT_PROPERTY(PropertyName = "ChildFields")
 		Vector<PacketField> _childFields;
+
+	public:
+		bool validatePacketField() const;
 	};
 
 	class REFLECTIVE(PacketSchema)
 	{
 		KEYH_REFLECT_DECLARE_BODY(PacketSchema);
 
-	private:
+	REFLECT_PRIVATE:
 		KEYH_REFLECT_PROPERTY(PropertyName = "SchemaName")
 		FlyweightStringA _schemaName;
 

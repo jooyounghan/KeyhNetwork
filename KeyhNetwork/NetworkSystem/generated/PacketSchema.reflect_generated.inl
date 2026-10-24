@@ -7,18 +7,6 @@
 
 namespace keyh
 {
-	KEYH_REFLECT_ENUM_BEGIN(FieldType)
-		KEYH_REFLECT_ENUM_VALUE(FieldType, Int)
-		KEYH_REFLECT_ENUM_VALUE(FieldType, Uint)
-		KEYH_REFLECT_ENUM_VALUE(FieldType, Float)
-		KEYH_REFLECT_ENUM_VALUE(FieldType, Double)
-		KEYH_REFLECT_ENUM_VALUE(FieldType, ManualFloat)
-		KEYH_REFLECT_ENUM_VALUE(FieldType, Group)
-	KEYH_REFLECT_ENUM_END(FieldType)
-}
-
-namespace keyh
-{
 	template<> ReflectMetaObject ReflectObject<PacketField>::initializeMetaObject();
 }
 

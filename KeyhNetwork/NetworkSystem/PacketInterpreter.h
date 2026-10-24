@@ -8,6 +8,7 @@ namespace keyh
 		KEYH_REFLECT_DECLARE_BODY(PacketInterpreter);
 
 	private:
-		StaticArray<int, static_cast<size_t>(FieldType::Count)> _fieldInterpreters;
+		StaticArray<int, kFieldTypeCount> _fieldInterpreters;
 	};
 }
+#include "generated/PacketInterpreter.reflect_generated.inl"

@@ -13,4 +13,8 @@ namespace keyh
 		Group,
 		Count,
 	};
+	constexpr size_t kFieldTypeCount = static_cast<size_t>(FieldType::Count);
+	static_assert(kFieldTypeCount == 6, "FieldType count mismatch");
+
 }
+#include "generated/PacketEnum.reflect_generated.inl"

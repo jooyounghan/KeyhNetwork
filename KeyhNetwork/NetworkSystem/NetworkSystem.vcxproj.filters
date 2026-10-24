@@ -1,31 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source">
-      <UniqueIdentifier>{5aec6c19-e0d7-4754-b0f4-fc23d446076f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header">
       <UniqueIdentifier>{874ce328-3c34-4402-ad0c-477745e7a16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Packet">
+      <UniqueIdentifier>{221f47aa-9ffa-45a0-9a45-3768a6e55e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Network">
+      <UniqueIdentifier>{bd71f84c-08bd-4cc1-8c83-026a5cf6a0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\I/O">
+      <UniqueIdentifier>{ff10482c-3a69-4c28-8a93-3986523f3824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Connection">
+      <UniqueIdentifier>{cd885836-1321-4c6a-9d5a-8f81736ad477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{5aec6c19-e0d7-4754-b0f4-fc23d446076f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Packet">
       <UniqueIdentifier>{ac7e1fd5-67c8-488d-8c8c-d7e535bf40fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header\Packet">
-      <UniqueIdentifier>{221f47aa-9ffa-45a0-9a45-3768a6e55e69}</UniqueIdentifier>
+    <Filter Include="Source\Network">
+      <UniqueIdentifier>{83237f61-5793-4e50-8d1c-ff679aa7da14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\I/O">
+      <UniqueIdentifier>{e317d324-c34f-4684-9dc9-dada5f3d9252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Connection">
+      <UniqueIdentifier>{cd2dc046-0783-4d83-ab90-f3fc515f0509}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NetworkSystemPch.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="NetworkTypes.h">
+      <Filter>Header\Network</Filter>
+    </ClInclude>
     <ClInclude Include="PacketSchema.h">
       <Filter>Header\Packet</Filter>
     </ClInclude>
-    <ClInclude Include="PacketManager.h">
+    <ClInclude Include="PacketInterpreter.h">
       <Filter>Header\Packet</Filter>
     </ClInclude>
-    <ClInclude Include="PacketPool.h">
+    <ClInclude Include="PacketEnum.h">
       <Filter>Header\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Header\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="INetworkIoEngine.h">
+      <Filter>Header\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="IoBufferPool.h">
+      <Filter>Header\I/O</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionRegistry.h">
+      <Filter>Header\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>Header\Connection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -35,14 +71,37 @@
     <ClCompile Include="PacketSchema.cpp">
       <Filter>Source\Packet</Filter>
     </ClCompile>
-    <ClCompile Include="PacketManager.cpp">
+    <ClCompile Include="PacketInterpreter.cpp">
       <Filter>Source\Packet</Filter>
     </ClCompile>
-    <ClCompile Include="PacketPool.cpp">
+    <ClCompile Include="PacketEnum.cpp">
       <Filter>Source\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Source\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="INetworkIoEngine.cpp">
+      <Filter>Source\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="IoBufferPool.cpp">
+      <Filter>Source\I/O</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionRegistry.cpp">
+      <Filter>Source\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>Source\Connection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="NetworkSystem.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(KeyhCommonNatvis)" />
+    <Natvis Include="$(KeyhCommonNatvis)" />
+    <Natvis Include="$(KeyhCommonNatvis)" />
+    <Natvis Include="$(KeyhCommonNatvis)" />
+    <Natvis Include="$(KeyhCommonNatvis)" />
+    <Natvis Include="$(KeyhCommonNatvis)" />
   </ItemGroup>
 </Project>

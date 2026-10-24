@@ -1,4 +1,6 @@
-﻿int main()
+﻿#include "ConnectionRegistry.h"
+
+int main()
 {
 
 }
