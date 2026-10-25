@@ -73,6 +73,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IoBuffer.cpp" />
+    <ClCompile Include="OperationContext.cpp" />
     <ClCompile Include="SocketRegistry.cpp" />
     <ClCompile Include="INetworkIoEngine.cpp" />
     <ClCompile Include="Socket.cpp" />
@@ -86,6 +88,9 @@
     <ClCompile Include="Session.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IoBuffer.h" />
+    <ClInclude Include="IoBuffer.hpp" />
+    <ClInclude Include="OperationContext.h" />
     <ClInclude Include="SocketRegistry.h" />
     <ClInclude Include="INetworkIoEngine.h" />
     <ClInclude Include="Socket.h" />

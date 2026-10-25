@@ -10,9 +10,6 @@
     <Filter Include="Header\Network">
       <UniqueIdentifier>{bd71f84c-08bd-4cc1-8c83-026a5cf6a0cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header\I/O">
-      <UniqueIdentifier>{ff10482c-3a69-4c28-8a93-3986523f3824}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{5aec6c19-e0d7-4754-b0f4-fc23d446076f}</UniqueIdentifier>
     </Filter>
@@ -22,14 +19,23 @@
     <Filter Include="Source\Network">
       <UniqueIdentifier>{83237f61-5793-4e50-8d1c-ff679aa7da14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\I/O">
-      <UniqueIdentifier>{e317d324-c34f-4684-9dc9-dada5f3d9252}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header\Socket">
       <UniqueIdentifier>{cd885836-1321-4c6a-9d5a-8f81736ad477}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Socket">
       <UniqueIdentifier>{cd2dc046-0783-4d83-ab90-f3fc515f0509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Operation">
+      <UniqueIdentifier>{7e4d575f-804c-4dad-94c8-75c3f732abfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Operation">
+      <UniqueIdentifier>{887d51e8-170b-4f1b-8d76-12b5710eb43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Buffer">
+      <UniqueIdentifier>{ff10482c-3a69-4c28-8a93-3986523f3824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Buffer">
+      <UniqueIdentifier>{e317d324-c34f-4684-9dc9-dada5f3d9252}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,13 +61,22 @@
       <Filter>Header\Network</Filter>
     </ClInclude>
     <ClInclude Include="IoBufferPool.h">
-      <Filter>Header\I/O</Filter>
+      <Filter>Header\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="SocketRegistry.h">
       <Filter>Header\Socket</Filter>
     </ClInclude>
     <ClInclude Include="Socket.h">
       <Filter>Header\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationContext.h">
+      <Filter>Header\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="IoBuffer.h">
+      <Filter>Header\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="IoBuffer.hpp">
+      <Filter>Header\Buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +99,7 @@
       <Filter>Source\Network</Filter>
     </ClCompile>
     <ClCompile Include="IoBufferPool.cpp">
-      <Filter>Source\I/O</Filter>
+      <Filter>Source\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="SocketRegistry.cpp">
       <Filter>Source\Socket</Filter>
@@ -92,11 +107,18 @@
     <ClCompile Include="Socket.cpp">
       <Filter>Source\Socket</Filter>
     </ClCompile>
+    <ClCompile Include="OperationContext.cpp">
+      <Filter>Source\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="IoBuffer.cpp">
+      <Filter>Source\Buffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="NetworkSystem.props" />
   </ItemGroup>
   <ItemGroup>
+    <Natvis Include="$(KeyhCommonNatvis)" />
     <Natvis Include="$(KeyhCommonNatvis)" />
     <Natvis Include="$(KeyhCommonNatvis)" />
     <Natvis Include="$(KeyhCommonNatvis)" />

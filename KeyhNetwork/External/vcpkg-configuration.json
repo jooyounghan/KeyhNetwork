@@ -3,7 +3,7 @@
   "registries": [
     {
       "kind": "git",
-      "baseline": "55498d76ac4f350284132ae6b34c32ac867f9dd2",
+      "baseline": "73241633989d6fe218d8547ee6d9f6e9bc843703",
       "repository": "https://github.com/jooyounghan/KeyhCommon.git",
       "packages": [
         "keyhcommon"
