@@ -7,17 +7,11 @@
     <Filter Include="Header\Packet">
       <UniqueIdentifier>{221f47aa-9ffa-45a0-9a45-3768a6e55e69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header\Network">
-      <UniqueIdentifier>{bd71f84c-08bd-4cc1-8c83-026a5cf6a0cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{5aec6c19-e0d7-4754-b0f4-fc23d446076f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Packet">
       <UniqueIdentifier>{ac7e1fd5-67c8-488d-8c8c-d7e535bf40fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Network">
-      <UniqueIdentifier>{83237f61-5793-4e50-8d1c-ff679aa7da14}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header\Socket">
       <UniqueIdentifier>{cd885836-1321-4c6a-9d5a-8f81736ad477}</UniqueIdentifier>
@@ -37,13 +31,22 @@
     <Filter Include="Source\Buffer">
       <UniqueIdentifier>{e317d324-c34f-4684-9dc9-dada5f3d9252}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header\Backend">
+      <UniqueIdentifier>{bd71f84c-08bd-4cc1-8c83-026a5cf6a0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Backend">
+      <UniqueIdentifier>{83237f61-5793-4e50-8d1c-ff679aa7da14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Backend\IOCP">
+      <UniqueIdentifier>{3af78409-c27e-463a-8e05-2a2e6718080e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Backend\IOCP">
+      <UniqueIdentifier>{aba9a995-e179-41c3-b64c-d559d3694e70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NetworkSystemPch.h">
       <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="NetworkTypes.h">
-      <Filter>Header\Network</Filter>
     </ClInclude>
     <ClInclude Include="PacketSchema.h">
       <Filter>Header\Packet</Filter>
@@ -54,11 +57,8 @@
     <ClInclude Include="PacketEnum.h">
       <Filter>Header\Packet</Filter>
     </ClInclude>
-    <ClInclude Include="Session.h">
-      <Filter>Header\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="INetworkIoEngine.h">
-      <Filter>Header\Network</Filter>
+    <ClInclude Include="IIoBackend.h">
+      <Filter>Header\Backend</Filter>
     </ClInclude>
     <ClInclude Include="IoBufferPool.h">
       <Filter>Header\Buffer</Filter>
@@ -78,6 +78,24 @@
     <ClInclude Include="IoBuffer.hpp">
       <Filter>Header\Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="IoBufferPool.hpp">
+      <Filter>Header\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="SubmitResult.h">
+      <Filter>Header\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="IoCompletion.h">
+      <Filter>Header\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationID.h">
+      <Filter>Header\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkTypes.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IocpBackend.h">
+      <Filter>Header\Backend\IOCP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NetworkSystemPch.cpp">
@@ -92,11 +110,8 @@
     <ClCompile Include="PacketEnum.cpp">
       <Filter>Source\Packet</Filter>
     </ClCompile>
-    <ClCompile Include="Session.cpp">
-      <Filter>Source\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="INetworkIoEngine.cpp">
-      <Filter>Source\Network</Filter>
+    <ClCompile Include="IIoBackend.cpp">
+      <Filter>Source\Backend</Filter>
     </ClCompile>
     <ClCompile Include="IoBufferPool.cpp">
       <Filter>Source\Buffer</Filter>
@@ -113,11 +128,25 @@
     <ClCompile Include="IoBuffer.cpp">
       <Filter>Source\Buffer</Filter>
     </ClCompile>
+    <ClCompile Include="SubmitResult.cpp">
+      <Filter>Source\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="IoCompletion.cpp">
+      <Filter>Source\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkTypes.cpp" />
+    <ClCompile Include="OperationID.cpp">
+      <Filter>Source\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="IocpBackend.cpp">
+      <Filter>Source\Backend\IOCP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="NetworkSystem.props" />
   </ItemGroup>
   <ItemGroup>
+    <Natvis Include="$(KeyhCommonNatvis)" />
     <Natvis Include="$(KeyhCommonNatvis)" />
     <Natvis Include="$(KeyhCommonNatvis)" />
     <Natvis Include="$(KeyhCommonNatvis)" />

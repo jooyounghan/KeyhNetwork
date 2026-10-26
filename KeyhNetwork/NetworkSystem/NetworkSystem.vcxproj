@@ -74,9 +74,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="IoBuffer.cpp" />
+    <ClCompile Include="IoCompletion.cpp" />
+    <ClCompile Include="IocpBackend.cpp" />
+    <ClCompile Include="NetworkTypes.cpp" />
     <ClCompile Include="OperationContext.cpp" />
+    <ClCompile Include="OperationID.cpp" />
     <ClCompile Include="SocketRegistry.cpp" />
-    <ClCompile Include="INetworkIoEngine.cpp" />
+    <ClCompile Include="IIoBackend.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="NetworkSystemPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -85,14 +89,18 @@
     <ClCompile Include="PacketInterpreter.cpp" />
     <ClCompile Include="IoBufferPool.cpp" />
     <ClCompile Include="PacketSchema.cpp" />
-    <ClCompile Include="Session.cpp" />
+    <ClCompile Include="SubmitResult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IoBuffer.h" />
     <ClInclude Include="IoBuffer.hpp" />
+    <ClInclude Include="IoBufferPool.hpp" />
+    <ClInclude Include="IoCompletion.h" />
+    <ClInclude Include="IocpBackend.h" />
     <ClInclude Include="OperationContext.h" />
+    <ClInclude Include="OperationID.h" />
     <ClInclude Include="SocketRegistry.h" />
-    <ClInclude Include="INetworkIoEngine.h" />
+    <ClInclude Include="IIoBackend.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="NetworkSystemPch.h" />
     <ClInclude Include="NetworkTypes.h" />
@@ -100,7 +108,7 @@
     <ClInclude Include="PacketInterpreter.h" />
     <ClInclude Include="IoBufferPool.h" />
     <ClInclude Include="PacketSchema.h" />
-    <ClInclude Include="Session.h" />
+    <ClInclude Include="SubmitResult.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NetworkSystem.props" />

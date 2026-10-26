@@ -16,7 +16,7 @@ namespace keyh
 		SocketID	registerSocket(Socket&& socket);
 
 	public:
-		void			unregisterSocket(SocketID socket);
+		void		unregisterSocket(SocketID socket);
 
 	public:
 		const Socket*	getSocket(SocketID socket) const;

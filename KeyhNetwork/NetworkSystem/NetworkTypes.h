@@ -28,16 +28,36 @@ namespace keyh
 
 		static constexpr uint32 kInvalidGeneration = 0;
 		static constexpr uint32 kInitialGeneration = 1;
+		static uint64 encode(SocketID socketId);
 
 		inline bool isValid() const { return _generation != kInvalidGeneration; }
 	};
-
-
 
 	enum class OperationType : uint8
 	{
 		None,
 		Send,
 		Receive,
+	};
+
+	enum class IoErrorCode : uint8
+	{
+		None,
+		InvalidSocket,
+		InvalidOperation,
+		InvalidBuffer,
+		ResourceExhausted,
+		BackendStopping,
+		SystemError
+	};
+
+	struct IoErrorGroup
+	{
+		IoErrorCode	_error;
+		int			_nativeError;
+
+	public:
+		IoErrorGroup();
+		IoErrorGroup(IoErrorCode error, int nativeError);
 	};
 }
